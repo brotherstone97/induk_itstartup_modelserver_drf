@@ -19,7 +19,7 @@ _input = pd.DataFrame(data,index=np.arange(1))
 
 
 #spring으로 부터 날씨 정보와 미세먼지 정보를 받음
-def predict_rental(weather):
+# def predict_rental(weather):
     
 
 
