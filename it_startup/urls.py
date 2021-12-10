@@ -19,5 +19,5 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('predict/', include('ddareungi.urls'))
+    path('ddareungi/', include('ddareungi.urls'))
 ]

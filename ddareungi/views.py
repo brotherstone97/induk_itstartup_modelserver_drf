@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .load_model import predict_rental
+# from .load_model import predict_rental
 
 
 # Create your views here.
@@ -17,5 +16,7 @@ class Weather(APIView):
 
         # raw_weather_data = request.data
         # result = predict_rental(raw_weather_data)
-        return Response('test')
+
+        request_data = request.data
+        return Response(request_data)
 
