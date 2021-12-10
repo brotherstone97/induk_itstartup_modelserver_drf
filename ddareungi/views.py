@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-# from .load_model import predict_rental
+from .load_model import predict_rental
 
 
 # Create your views here.
@@ -14,9 +14,8 @@ class Weather(APIView):
         #         "month":6.0, "day":1.0, "PM10":71.45,"PM2.5":21.04,
         #        "weekday":2}
 
-        # raw_weather_data = request.data
-        # result = predict_rental(raw_weather_data)
+        raw_weather_data = request.data
+        result = predict_rental(raw_weather_data)
 
-        request_data = request.data
-        return Response(request_data)
+        return Response(result)
 
