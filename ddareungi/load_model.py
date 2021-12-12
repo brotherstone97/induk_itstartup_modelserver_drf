@@ -1,11 +1,10 @@
 import datetime
-
-import joblib
 import pandas as pd
 import numpy as np
-from pandas import to_datetime
+import joblib
+import os
 
-# loaded_model = joblib.load('../models/model.pkl')
+loaded_model = joblib.load('../models/model_exclude_PM.pkl')
 
 # user의 input을 가정한 더미 데이터
 # data = {"sky_condition": 3.800,
@@ -25,18 +24,28 @@ final_weather = {}
 
 now = datetime.datetime.now()
 
+
 # spring으로 부터 날씨 정보와 미세먼지 정보를 받음
 def predict_rental(weather):
-    #기존 키값을 model의 column으로 변경하고 value값을 float로 변환하여 저장
+    # 기존 키값을 model의 column으로 변경하고 value값을 float로 변환하여 저장
     for i, key in enumerate(weather):
         final_weather[column_name_list[i]] = float(weather[key])
 
-
     # 월:1 ~ 일:7
-    final_weather['year'], final_weather['month'], final_weather['day'] = now.year, now.month, now.day
-    final_weather['weekday'] = datetime.datetime.today().weekday() + 1
+    final_weather['year'], final_weather['month'], final_weather['day'] = float(now.year), float(now.month), float(now.day)
+    final_weather['weekday'] = float(datetime.datetime.today().weekday() + 1)
 
+    # 일교차 생성
+    final_weather['temp_gap'] = final_weather['high_temp'] - final_weather['low_temp']
 
-    return final_weather
+    df = pd.DataFrame(final_weather, index=np.arange(1))
+
     # input값에 대한 최종 대여량 예측값
-    # result = loaded_model.predict(weather)
+    result = loaded_model.predict(df)
+
+    # print(result)
+    # return result
+
+    print(df)
+    print(type(df))
+    return df
