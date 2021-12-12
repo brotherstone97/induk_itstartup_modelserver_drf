@@ -4,7 +4,7 @@ import numpy as np
 import joblib
 import os
 
-loaded_model = joblib.load('../models/model_exclude_PM.pkl')
+loaded_model = joblib.load('models/model_exclude_PM.pkl')
 
 # user의 input을 가정한 더미 데이터
 # data = {"sky_condition": 3.800,
