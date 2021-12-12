@@ -4,7 +4,10 @@ import numpy as np
 import joblib
 import os
 
-loaded_model = joblib.load('models/model_exclude_PM.pkl')
+#ubuntu용
+loaded_model = joblib.load('models/model_exclude_PM_second.pkl')
+#windows용
+# loaded_model = joblib.load(r'C:\Users\ohs97\it_startup\models\model_exclude_PM_second.pkl')
 
 # user의 input을 가정한 더미 데이터
 # data = {"sky_condition": 3.800,
@@ -43,9 +46,9 @@ def predict_rental(weather):
     # input값에 대한 최종 대여량 예측값
     result = loaded_model.predict(df)
 
-    # print(result)
-    # return result
+    print(result)
+    return result
 
-    print(df)
-    print(type(df))
-    return df
+    # print(df)
+    # print(type(df))
+    # return df
