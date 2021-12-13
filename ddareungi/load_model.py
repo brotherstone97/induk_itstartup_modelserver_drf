@@ -43,12 +43,13 @@ def predict_rental(weather):
 
     df = pd.DataFrame(final_weather, index=np.arange(1))
 
+    #column순서 원상복구(모델에 넣기 위함)
+    df = df[["sky_condition", "precipitation_form", "wind_speed", "humidity", "low_temp",
+             "high_temp", "Precipitation_Probability", "year", "month", "day", "weekday", "temp_gap"]]
     # input값에 대한 최종 대여량 예측값
     result = loaded_model.predict(df)
 
     print(result)
     return result
 
-    # print(df)
-    # print(type(df))
-    # return df
+
