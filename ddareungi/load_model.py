@@ -49,7 +49,6 @@ def predict_rental(weather):
     # input값에 대한 최종 대여량 예측값
     result = loaded_model.predict(df)
 
-    print(result)
-    return result
+    return df
 
 
